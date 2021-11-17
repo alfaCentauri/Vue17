@@ -18,8 +18,19 @@ and open the template in the editor.
     </head>
     <body>
         <div class="container" id="app">
-            <h1 class="text-center text-primary">Componentes para crear pestañas.</h1>
-            <template-tabs v-bind:value="mensaje"></template-tabs>
+            <h1 class="text-center text-primary">{{ titulo }}</h1>                                    
+                <div class="tab">
+                    <div v-for="ciudadTab in lista"> 
+                        <button class="tablinks" v-on:click="openCity(ciudadTab.nombre)">{{ ciudadTab.nombre }}</button>
+                    </div>                    
+                </div>
+                <!-- Tab content -->
+                <template-tabs
+                    v-for="ciudadTab in lista"
+                    v-bind:key = "ciudadTab.id"
+                    v-bind:ciudad ="ciudadTab"
+                >
+                </template-tabs>           
         </div>
         <script src="js/app.js" type="text/javascript"></script>
     </body>
